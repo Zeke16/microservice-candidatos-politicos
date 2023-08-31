@@ -13,6 +13,13 @@ export class CandidatoPoliticoController {
   async create(@Payload() payload: any) {
     const { candidatoPolitico, foto_candidato } = payload;
 
+    candidatoPolitico.id_partido_politico = Number(
+      candidatoPolitico.id_partido_politico,
+    );
+    candidatoPolitico.id_persona_natural = Number(
+      candidatoPolitico.id_persona_natural,
+    );
+
     candidatoPolitico.foto_candidato =
       this.candidatoPoliticoService.generateFilename(
         foto_candidato.originalname,
