@@ -20,6 +20,18 @@ export class CandidatoPoliticoController {
       candidatoPolitico.id_persona_natural,
     );
 
+    const existUsuarioId =
+      await this.candidatoPoliticoService.checkUsuarioIdInCandidatoPolitico(
+        candidatoPolitico.id_persona_natural,
+      );
+
+    if (existUsuarioId) {
+      return {
+        statusCode: HttpStatus.CONFLICT,
+        message: 'El usuario ya se encuentra registrado como candidato',
+      };
+    }
+
     candidatoPolitico.foto_candidato =
       this.candidatoPoliticoService.generateFilename(
         foto_candidato.originalname,

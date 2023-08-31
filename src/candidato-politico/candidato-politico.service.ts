@@ -82,6 +82,12 @@ export class CandidatoPoliticoService {
     return candidatoPolitico;
   }
 
+  async checkUsuarioIdInCandidatoPolitico(id: number) {
+    return await this.model.candidatos_politicos.findFirst({
+      where: { id_persona_natural: id },
+    });
+  }
+
   async update(
     id: number,
     candidatoPolitico: Prisma.candidatos_politicosUpdateInput,
