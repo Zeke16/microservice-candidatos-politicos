@@ -39,6 +39,7 @@ export class CandidatoPoliticoService {
         id_persona_natural: true,
         partido_politico: {
           select: {
+            id_partido_politico: true,
             nombre: true,
             logo: true,
             siglas: true,
@@ -46,6 +47,7 @@ export class CandidatoPoliticoService {
         },
         informacion_personal: {
           select: {
+            id_persona_natural: true,
             nombres: true,
             apellidos: true,
             fecha_nacimiento: true,
@@ -63,6 +65,7 @@ export class CandidatoPoliticoService {
       include: {
         partido_politico: {
           select: {
+            id_partido_politico: true,
             nombre: true,
             logo: true,
             siglas: true,
@@ -70,6 +73,7 @@ export class CandidatoPoliticoService {
         },
         informacion_personal: {
           select: {
+            id_persona_natural: true,
             nombres: true,
             apellidos: true,
             fecha_nacimiento: true,
