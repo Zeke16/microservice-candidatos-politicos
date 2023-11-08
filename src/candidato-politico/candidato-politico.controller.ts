@@ -20,6 +20,14 @@ export class CandidatoPoliticoController {
       candidatoPolitico.id_persona_natural,
     );
 
+    const validarCandidatoRol = await this.candidatoPoliticoService.checkRolExist(candidatoPolitico.rol);
+    if(validarCandidatoRol){
+      return {
+        statusCode: HttpStatus.CONFLICT,
+        message: `Partido politico ya posee registrado un candidato ${candidatoPolitico.rol}`,
+      };
+    }
+
     const existUsuarioId =
       await this.candidatoPoliticoService.checkUsuarioIdInCandidatoPolitico(
         candidatoPolitico.id_persona_natural,

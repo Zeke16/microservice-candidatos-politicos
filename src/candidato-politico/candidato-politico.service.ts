@@ -37,6 +37,7 @@ export class CandidatoPoliticoService {
         modificado_en: true,
         id_partido_politico: true,
         id_persona_natural: true,
+        rol: true,
         partido_politico: {
           select: {
             id_partido_politico: true,
@@ -86,11 +87,21 @@ export class CandidatoPoliticoService {
     return candidatoPolitico;
   }
 
+  async checkRolExist(rol: string){
+    return await this.model.candidatos_politicos.findFirst({
+      where: {
+        rol: rol
+      }
+    })
+  }
+
   async checkUsuarioIdInCandidatoPolitico(id: number) {
     return await this.model.candidatos_politicos.findFirst({
       where: { id_persona_natural: id },
     });
   }
+
+  
 
   async update(
     id: number,

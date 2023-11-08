@@ -48,6 +48,7 @@ model candidatos_politicos {
   modificado_en       DateTime @updatedAt
   id_partido_politico Int
   id_persona_natural  Int?
+  rol                 String   @db.Text
 
   partido_politico     partidos_politicos  @relation(fields: [id_partido_politico], references: [id_partido_politico])
   informacion_personal personas_naturales? @relation(fields: [id_persona_natural], references: [id_persona_natural])
