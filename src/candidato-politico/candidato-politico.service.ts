@@ -87,10 +87,11 @@ export class CandidatoPoliticoService {
     return candidatoPolitico;
   }
 
-  async checkRolExist(rol: string){
+  async checkRolExist(rol: string, id_partido_politico: number){
     return await this.model.candidatos_politicos.findFirst({
       where: {
-        rol: rol
+        rol: rol,
+        id_partido_politico: id_partido_politico
       }
     })
   }
